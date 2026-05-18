@@ -1,0 +1,27 @@
+# ─────────────────────────────────────────────
+#  JobVault Backend — Python Dependencies
+# ─────────────────────────────────────────────
+
+# Core Framework
+Django>=4.2,<5.3
+
+# REST Framework
+djangorestframework>=3.15,<4.0
+
+# JWT Authentication
+djangorestframework-simplejwt>=5.3,<6.0
+
+# CORS Headers (React frontend integration)
+django-cors-headers>=4.3,<5.0
+
+# Filtering & Search
+django-filter>=24.1,<25.0
+
+# PostgreSQL adapter
+psycopg2-binary>=2.9,<3.0
+
+# Environment variable loader
+python-decouple>=3.8,<4.0
+
+# File validation helper (>=11.0 required for Python 3.14 support)
+Pillow>=11.0
