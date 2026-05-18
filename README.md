@@ -293,7 +293,7 @@ Send as `multipart/form-data` with field name `resume`.
 
 ```bash
 # Example with curl
-curl -X PATCH https://imdash19.pythonanywhere.com/api/applications/1/ \
+curl -X PATCH https://username.pythonanywhere.com/api/applications/1/ \
   -H "Authorization: Bearer <token>" \
   -F "resume=@/path/to/resume.pdf" \
   -F "status=Interview Scheduled"
@@ -335,11 +335,11 @@ pip install -r requirements.txt
 ```env
 SECRET_KEY=your-production-secret-key
 DEBUG=False
-ALLOWED_HOSTS=imdash19.pythonanywhere.com
-DB_NAME=imdash19$jobvault_db
-DB_USER=imdash19
+ALLOWED_HOSTS=username.pythonanywhere.com
+DB_NAME=username$jobvault_db
+DB_USER=username
 DB_PASSWORD=your_db_password
-DB_HOST=imdash19.mysql.pythonanywhere-services.com
+DB_HOST=username.mysql.pythonanywhere-services.com
 DB_PORT=3306
 CORS_ALLOWED_ORIGINS=https://yourfrontend.com
 ```
@@ -356,7 +356,7 @@ Replace the contents of your PythonAnywhere WSGI file with:
 
 ```python
 import os, sys
-path = '/home/imdash19/jobvault_backend'
+path = '/home/username/jobvault_backend'
 if path not in sys.path:
     sys.path.insert(0, path)
 os.environ['DJANGO_SETTINGS_MODULE'] = 'jobvault_backend.settings'
@@ -368,66 +368,8 @@ application = get_wsgi_application()
 
 | URL | Directory |
 |---|---|
-| `/static/` | `/home/imdash19/jobvault_backend/staticfiles` |
-| `/media/` | `/home/imdash19/jobvault_backend/media` |
-
-### 7. Reload the web app ✅
-
----
-
-## Frontend Integration (React + Axios)
-
-```js
-// src/api/axios.js
-import axios from 'axios';
-
-const API = axios.create({
-  baseURL: 'https://imdash19.pythonanywhere.com',
-});
-
-API.interceptors.request.use((config) => {
-  const token = localStorage.getItem('access_token');
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
-
-export default API;
-```
-
-```js
-// Login and save tokens
-const res = await API.post('/api/auth/login/', { username, password });
-localStorage.setItem('access_token', res.data.access);
-localStorage.setItem('refresh_token', res.data.refresh);
-
-// Fetch applications with filters
-const res = await API.get('/api/applications/', {
-  params: { status: 'Applied', ordering: '-applied_date' }
-});
-
-// Get dashboard stats
-const res = await API.get('/api/dashboard/stats/');
-```
-
----
-
-## Environment Variables Reference
-
-| Variable | Required | Default | Description |
-|---|---|---|---|
-| `SECRET_KEY` | ✅ | — | Django secret key |
-| `DEBUG` | ✅ | `False` | Debug mode |
-| `ALLOWED_HOSTS` | ✅ | — | Comma-separated hosts |
-| `DB_NAME` | ✅ | `jobvault_db` | Database name |
-| `DB_USER` | ✅ | `postgres` | Database user |
-| `DB_PASSWORD` | ✅ | — | Database password |
-| `DB_HOST` | ✅ | `localhost` | Database host |
-| `DB_PORT` | ✅ | `5432` | Database port |
-| `CORS_ALLOWED_ORIGINS` | ✅ | — | Frontend origins |
-| `ACCESS_TOKEN_LIFETIME_MINUTES` | ❌ | `60` | JWT access token life |
-| `REFRESH_TOKEN_LIFETIME_DAYS` | ❌ | `7` | JWT refresh token life |
-
----
+| `/static/` | `/home/username/jobvault_backend/staticfiles` |
+| `/media/` | `/home/username/jobvault_backend/media` |
 
 ## License
 
