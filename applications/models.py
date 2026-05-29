@@ -39,6 +39,7 @@ class AppliedPlatform(models.TextChoices):
     FOUNDIT          = 'Foundit',          'Foundit'
     COMPANY_WEBSITE  = 'Company Website',  'Company Website'
     REFERRAL         = 'Referral',         'Referral'
+    NARESH_IT        = 'Naresh IT Placement Cell', 'Naresh IT Placement Cell'
     OTHER            = 'Other',            'Other'
 
 
